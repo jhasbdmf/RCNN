@@ -39,5 +39,5 @@ for inputs, labels, _ in test_loader:
     activations = r_model(inputs, return_actvs=True)
     for key, value in activations.items():
 
-        print (type(key), type(value))
+        print (type(key), type(value[0]))
     break
