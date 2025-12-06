@@ -7,7 +7,7 @@ def evaluate(model, loader):
     correct = 0
     total = 0
     with torch.no_grad():
-        for images, labels in loader:
+        for images, labels, _ in loader:
             images = images.to(device)
             labels = labels.to(device)
             B = images.size(0)
