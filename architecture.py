@@ -54,11 +54,11 @@ class RCNN(nn.Module):
 
         for t in range(1,timesteps):
             # Reconstruct input from conv3 and conv2
-            print(activations['conv3'][t-1].shape, activations['conv2'][t-1].shape)
-            print(self.deconv3_to_input.weight.shape, self.deconv2_to_input.weight.shape)
+            #print(activations['conv3'][t-1].shape, activations['conv2'][t-1].shape)
+            #print(self.deconv3_to_input.weight.shape, self.deconv2_to_input.weight.shape)
             recon_from_conv3 = self.deconv3_to_input(activations['conv3'][t-1])
             recon_from_conv2 = self.deconv2_to_input(activations['conv2'][t-1])
-            print(recon_from_conv3.shape, recon_from_conv2.shape)
+            #print(recon_from_conv3.shape, recon_from_conv2.shape)
             recon_input = torch.sigmoid(recon_from_conv3 + recon_from_conv2)
 
             activations['input'].append(x * (2*recon_input) if self.modulation_type == 'multiplicative' else F.relu(x + (2*recon_input-1)))

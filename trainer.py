@@ -40,7 +40,7 @@ def train_model (model, train_loader, val_loader, n_epochs, device):
             correct_per_batch = preds.eq(labels).sum().item()
             correct += correct_per_batch
             total += batch_size
-            #print (f"batch acc = {correct_per_batch/batch_size}")
+            print (f"batch acc = {correct_per_batch/batch_size}")
 
         avg_loss = running_loss / total
         train_loss_history.append (avg_loss)
