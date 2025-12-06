@@ -2,7 +2,7 @@ import torch
 from architecture import RCNN
 from dataloader_test import ClutteredMNIST, get_mnist_cluttered_loaders
 
-def evaluate(model, loader):
+def evaluate_ffn(model, loader):
     model.eval()
     correct = 0
     total = 0
@@ -91,5 +91,5 @@ r_model.load_state_dict(state_dict)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 r_model.to(device)
 
-print ("Accs of ffn: ", evaluate_rnn(ff_model, test_loader))
+print ("Accs of ffn: ", evaluate_ffn(ff_model, test_loader))
 print ("Accs of rnn: ", evaluate_rnn(r_model, test_loader))
