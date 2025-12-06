@@ -30,7 +30,8 @@ def evaluate_rnn(model, loader):
     model.eval()
     correct = 0
     total = 0
-    timestep_correct = []
+    n_timesteps = 5
+    timestep_correct = [n_timesteps]
     with torch.no_grad():
         for images, labels, _ in loader:
             images = images.to(device)
@@ -39,7 +40,7 @@ def evaluate_rnn(model, loader):
             total += B
           
 
-            timestep_logits = model(images)
+            timestep_logits = model(images, n_timesteps)
             print (len(timestep_logits))
             
             for index, logits in enumerate(timestep_logits):
