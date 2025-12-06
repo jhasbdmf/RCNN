@@ -61,7 +61,7 @@ train_loader, val_loader, test_loader = get_mnist_cluttered_loaders(
 )
 
 
-"""
+
 # 1. Recreate the model
 ff_model = RCNN()
 # 2. Load checkpoint safely to CPU, regardless of where it was saved
@@ -75,8 +75,8 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 ff_model.to(device)
 
 
-print (evaluate(ff_model, test_loader))
-"""
+
+
 
 
 # 1. Recreate the model
@@ -91,5 +91,5 @@ r_model.load_state_dict(state_dict)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 r_model.to(device)
 
-
+print ("Accs of ffn: ", evaluate_rnn(ff_model, test_loader))
 print ("Accs of rnn: ", evaluate_rnn(r_model, test_loader))
