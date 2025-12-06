@@ -6,7 +6,7 @@ from dataloader_test import ClutteredMNIST, get_mnist_cluttered_loaders
 
 import torch
 
-def apply_pca_to_batch(tensors, n_components=2):
+def apply_pca_to_batch(tensors, n_components=128):
     tensor_cpu = tensors.to('cpu')
     np_array = tensor_cpu.detach().numpy()
     flat_array = np_array.reshape(np_array.shape[0], -1)  # batch size x features
