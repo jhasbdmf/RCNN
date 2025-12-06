@@ -87,9 +87,14 @@ if __name__ == '__main__':
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    abc_trained = train_model(model=abc, train_loader=train_loader, val_loader=val_loader, n_epochs=2, device = device)
+    abc_trained, train_loss_hisotry = train_model(model=abc, train_loader=train_loader, val_loader=val_loader, n_epochs=2, device = device)
 
+
+    print (train_loss_hisotry)
+    
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")  # e.g. 20251206_130945
     filename = f"trained_model_{timestamp}.pth"
+
+
 
     torch.save(abc_trained.state_dict(), filename)
