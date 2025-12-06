@@ -40,7 +40,7 @@ def evaluate_rnn(model, loader):
           
 
             timestep_logits = model(images)
-
+            print (len(timestep_logits))
             
             for index, logits in enumerate(timestep_logits):
                 _, preds = logits.max(1)
