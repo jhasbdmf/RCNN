@@ -9,7 +9,8 @@ import torch
 def apply_pca_to_batch(tensors, n_components=128):
     tensor_cpu = tensors.to('cpu')
     np_array = tensor_cpu.detach().numpy()
-    flat_array = np_array.reshape(np_array.shape[0], -1)  # batch size x features
+    #flat_array = np_array.reshape(np_array.shape[0], -1)
+    flat_array = np_array.reshape(-1)  
     pca = PCA(n_components=n_components)
     return pca.fit_transform(flat_array)
 
