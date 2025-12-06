@@ -1,4 +1,4 @@
-# %%
+
 
 import torch
 import torch.nn as nn
@@ -61,7 +61,7 @@ class RCNN(nn.Module):
             print(recon_from_conv3.shape, recon_from_conv2.shape)
             recon_input = torch.sigmoid(recon_from_conv3 + recon_from_conv2)
 
-            activations['input'].append(x * (2*recon_input)) if self.modulation_type == 'multiplicative' else (F.relu(x + (2*recon_input-1)))
+            activations['input'].append(x * (2*recon_input) if self.modulation_type == 'multiplicative' else F.relu(x + (2*recon_input-1)))
 
             # Forward pass
             activations['conv1'].append(F.relu(self.conv1(activations['input'][t])))
@@ -80,9 +80,9 @@ class RCNN(nn.Module):
         else:
             return activations['output']
         
-# %%
+
 
 if __name__ == "__main__":
     abc = RCNN()
     out = abc(torch.randn(2,1,64,64), timesteps=3, return_actvs=False)
-# %%
+
