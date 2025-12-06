@@ -37,5 +37,5 @@ r_model.to(device)
 
 for inputs, labels, _ in test_loader:
     activations = r_model(inputs, return_actvs=True)
-    print (activations.shape)
+    print (activations)
     break
