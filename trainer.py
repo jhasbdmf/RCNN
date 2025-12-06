@@ -33,7 +33,7 @@ def train_model (model, train_loader, val_loader, n_epochs, device):
             loss.backward()
             optimizer.step()
 
-            batch_size = inputs[0]
+            batch_size = inputs.size(0)
 
             running_loss += loss.item() * batch_size
             _, preds = logits.max(1)
