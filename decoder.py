@@ -39,5 +39,7 @@ for inputs, labels, _ in test_loader:
     activations = r_model(inputs, return_actvs=True)
     for key, value in activations.items():
 
-        print (type(key), type(value[0]), value[0].shape)
+        print (key)
+        for layer_act in value:
+            print (type(value[0]), layer_act.shape)
     break
