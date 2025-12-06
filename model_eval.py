@@ -49,7 +49,11 @@ def evaluate_rnn(model, loader):
                 correct += correct_per_batch
                 timestep_correct[index] = correct
                 print (f"{correct_per_batch} correct out of {B}")
-    return timestep_correct / total * 100.0
+
+    timestep_acc = [c / total * 100.0 for c in timestep_correct]
+    return timestep_acc
+
+    #return timestep_correct / total * 100.0
 
 train_loader, val_loader, test_loader = get_mnist_cluttered_loaders(
     root="./data", batch_size=256, val_fraction=0.1,
