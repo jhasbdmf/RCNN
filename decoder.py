@@ -48,6 +48,8 @@ for inputs, labels, _ in test_loader:
 
         print (key)
         for layer_act in value:
-            #print (type(value[0]), layer_act.shape)
+            print (type(value[0]), layer_act.shape)
+            print ("_"*5)
             print (type(value[0]), len(apply_pca_to_batch(layer_act)))
+            print ("_"*10)
     break
