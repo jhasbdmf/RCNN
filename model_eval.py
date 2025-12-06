@@ -46,8 +46,8 @@ def evaluate_rnn(model, loader):
             for index, logits in enumerate(timestep_logits):
                 _, preds = logits.max(1)
                 correct_per_batch = preds.eq(labels).sum().item()
-                correct += correct_per_batch
-                timestep_correct[index] = correct
+              
+                timestep_correct[index] += correct_per_batch
                 print (f"{correct_per_batch} correct out of {B}")
 
     timestep_acc = [c / total * 100.0 for c in timestep_correct]
