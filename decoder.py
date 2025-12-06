@@ -15,7 +15,7 @@ def apply_pca_to_batch(tensors, n_components=128):
     return pca.fit_transform(flat_array)
 
 
-def apply_pca_to_tensor(tensor: torch.Tensor, n_components=10):
+def apply_pca_to_tensor(tensor: torch.Tensor, n_components=128):
     # tensor shape: e.g. [1, 64, 64] or [C, H, W] or any shape
     tensor_cpu = tensor.detach().cpu()
     np_array = tensor_cpu.numpy().reshape(1, -1)  # single sample, many features
@@ -38,7 +38,8 @@ train_loader, val_loader, test_loader = get_mnist_cluttered_loaders(
     image_size=64, n_clutter=50
 )
 
-
+"how clutter is suppressed -- just plot activations"
+"PCA -- stack all activations of respective layers and timesteps, then run PCA, then logistic regression"
 
 # 1. Recreate the model
 r_model = RCNN()
