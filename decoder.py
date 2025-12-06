@@ -37,5 +37,7 @@ r_model.to(device)
 
 for inputs, labels, _ in test_loader:
     activations = r_model(inputs, return_actvs=True)
-    print (len(activations))
+    for key, value in activations.items():
+
+        print (type(key), type(value))
     break
