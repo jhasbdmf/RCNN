@@ -56,7 +56,7 @@ def train_model (model, train_loader, val_loader, n_epochs, device):
 
 if __name__ == '__main__':
     train_loader, val_loader, test_loader = get_mnist_cluttered_loaders(
-        root="./data", batch_size=16, val_fraction=0.1,
+        root="./data", batch_size=1024, val_fraction=0.1,
         image_size=64, n_clutter=50
     )
 
