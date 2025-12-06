@@ -31,7 +31,7 @@ def evaluate_rnn(model, loader):
     correct = 0
     total = 0
     n_timesteps = 5
-    timestep_correct = [n_timesteps]
+    timestep_correct = [0] * n_timesteps
     with torch.no_grad():
         for images, labels, _ in loader:
             images = images.to(device)
