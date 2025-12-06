@@ -41,7 +41,7 @@ def train_model (model, train_loader, val_loader, n_epochs, device):
             correct_per_batch = preds.eq(labels).sum().item()
             correct += correct_per_batch
             total += batch_size
-            print (f"batch acc = {correct_per_batch/batch_size}")
+            print (f"batch acc = {correct_per_batch/batch_size}, batch_size = {batch_size}")
 
         avg_loss = running_loss / total
         train_loss_history.append (avg_loss)
@@ -91,7 +91,7 @@ if __name__ == '__main__':
 
 
     print (train_loss_hisotry)
-    
+
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")  # e.g. 20251206_130945
     filename = f"trained_model_{timestamp}.pth"
 
