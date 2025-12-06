@@ -6,6 +6,13 @@ from dataloader_test import ClutteredMNIST, get_mnist_cluttered_loaders
 
 import torch
 
+def apply_pca_to_batch(tensors, n_components=2):
+    tensor_cpu = tensors.to('cpu')
+    np_array = tensor_cpu.detach().numpy()
+    flat_array = np_array.reshape(np_array.shape[0], -1)  # batch size x features
+    pca = PCA(n_components=n_components)
+    return pca.fit_transform(flat_array)
+
 
 
 logistic_regression = LogisticRegression(
@@ -41,5 +48,6 @@ for inputs, labels, _ in test_loader:
 
         print (key)
         for layer_act in value:
-            print (type(value[0]), layer_act.shape)
+            #print (type(value[0]), layer_act.shape)
+            print (type(value[0]), len(apply_pca_to_batch(layer_act)))
     break

@@ -55,6 +55,8 @@ def evaluate_rnn(model, loader):
 
     #return timestep_correct / total * 100.0
 
+
+
 train_loader, val_loader, test_loader = get_mnist_cluttered_loaders(
     root="./data", batch_size=256, val_fraction=0.1,
     image_size=64, n_clutter=50
