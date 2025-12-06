@@ -15,6 +15,15 @@ def apply_pca_to_batch(tensors, n_components=128):
     return pca.fit_transform(flat_array)
 
 
+def apply_pca_to_tensor(tensor: torch.Tensor, n_components=10):
+    # tensor shape: e.g. [1, 64, 64] or [C, H, W] or any shape
+    tensor_cpu = tensor.detach().cpu()
+    np_array = tensor_cpu.numpy().reshape(1, -1)  # single sample, many features
+
+    pca = PCA(n_components=n_components)
+    pcs = pca.fit_transform(np_array)  # shape: [1, n_components]
+    return pcs
+
 
 logistic_regression = LogisticRegression(
     multi_class="multinomial",
@@ -51,6 +60,6 @@ for inputs, labels, _ in test_loader:
         for layer_act in value:
             print (type(value[0]), layer_act.shape)
             print ("_"*5)
-            print (type(value[0]), len(apply_pca_to_batch(layer_act)))
+            print (type(value[0]), len(apply_pca_to_tensor(layer_act)))
             print ("_"*10)
     break
