@@ -2,7 +2,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.decomposition import PCA
 from architecture import RCNN
 from dataloader_test import ClutteredMNIST, get_mnist_cluttered_loaders
-from model_eval import evaluate_rnn
+
 
 import torch
 
