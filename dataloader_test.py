@@ -96,7 +96,7 @@ class ClutteredMNIST(Dataset):
         return canvas.clamp(0.0, 1.0), torch.tensor(label, dtype=torch.long), center_xy
 
 
-def get_mnist_cluttered_loaders(root="./data", batch_size=64,
+def get_mnist_cluttered_loaders(root="./data", batch_size=128,
                                 val_fraction=0.1, image_size=64, n_clutter=40):
     base_train = datasets.MNIST(root=root, train=True, download=True,
                                 transform=transforms.ToTensor())
@@ -127,7 +127,7 @@ def get_mnist_cluttered_loaders(root="./data", batch_size=64,
 
 if __name__ == "__main__":
     train_loader, val_loader, test_loader = get_mnist_cluttered_loaders(
-        root="./data", batch_size=16, val_fraction=0.1,
+        root="./data", batch_size=128, val_fraction=0.1,
         image_size=64, n_clutter=50
     )
     imgs, labels, centers = next(iter(train_loader))
