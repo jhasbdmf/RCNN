@@ -15,8 +15,10 @@ def evaluate(model, loader):
 
             logits = model(images)[0]
             _, preds = logits.max(1)
-            correct += preds.eq(labels).sum().item()
+            correct_per_batch = preds.eq(labels).sum().item()
+            correct += correct_per_batch
             total += B
+            print (f"{correct_per_batch} correct out of {B}")
     return correct / total * 100.0
 
 train_loader, val_loader, test_loader = get_mnist_cluttered_loaders(
